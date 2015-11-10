@@ -1,0 +1,15 @@
+<html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>AngularJS表达式</title>
+	<body>
+		<script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+		<script src="1.js"></script>
+		<h1>Sample App</h1>
+		<div ng-app="" ng-controller="studentController">
+			<p>Hello {{student.firstname + " " + student.lastname}}! </p>
+			<p>Expense on Books : {{cost * quantity}} Rs</p>
+			<p>Roll No: {{student.rollno}}</p>
+			<p>Marks(Math):{{marks[2]}}
+		</div>
+	</body>
+</html>
