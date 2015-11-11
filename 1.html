@@ -1,15 +1,44 @@
 <html>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>AngularJS表达式</title>
-	<body>
-		<script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
-		<script src="1.js"></script>
-		<h1>Sample App</h1>
+	<style>
+		table, th {
+			border: 1px solid gray;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+		td {
+			border: 3px solid black;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+		table tr:nth-child(2n+1) {
+			background-color: #ff0000;
+		}
+		table tr:nth-child(2n) {
+			background-color: #ffffff
+		}
+	</style>
+	<script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
+	<script src="app.js"></script>
+	<body>	
 		<div ng-app="" ng-controller="studentController">
-			<p>Hello {{student.firstname + " " + student.lastname}}! </p>
-			<p>Expense on Books : {{cost * quantity}} Rs</p>
-			<p>Roll No: {{student.rollno}}</p>
-			<p>Marks(Math):{{marks[2]}}
+			<p>Total click: {{ enableDisableButton }}</p></td>
+			<button ng-click="enableDisableButton = enableDisableButton + 1">Click Me!</button>
+			<table border="0">
+				<tr><td>姓:</td><th><input type="text" ng-model="student.firstname"></th></tr>
+				<tr><td>名:</td><td><input type="text" ng-model="student.lastname"></td></tr>
+				<tr><td>名字:</td><td>{{fullname()}}</td></tr>
+				<tr><td>科目:</td><td>
+				<table>
+					<tr><th>名字</th><th>标记</th></tr>
+					<tr ng-repeat="subject in subjects">
+						<td>{{subject.name}}</td>
+						<td>{{subject.makrs}}</td>
+					</tr>
+				</table>
+				</td></tr>
+			</table>
 		</div>
 	</body>
 </html>
