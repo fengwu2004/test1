@@ -8,7 +8,6 @@ function studentController($scope) {
 	$scope.student={firstname:'',lastname:'zz',rollno:101};
 	$scope.marks=[82,91,78,77,64];
 	$scope.quantity=1;
-	// $scope.enableDisableButton ='abcdefg';
 	$scope.cost=30;
 	$scope.fullname=function() {
 		var studentObj;
