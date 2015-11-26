@@ -20,30 +20,17 @@
 	<body>
 		<h2>AngularJS Inlcude示例</h2>
 		<div ng-app="mainApp" ng-controller="studentController">
-			<div ng-include="'main.html'"></div>
+			<!--<div ng-include="'main.html'"></div>-->
 			<div ng-include="'subjects.html'"></div>
 		</div>
 	<script>
 		var mainApp = angular.module("mainApp", []);
 		
 		mainApp.controller('studentController', function($scope) {
-			$scope.student = {
-				firstName:"周",
-				lastName: "杰伦",
-				fees:500,
-				subjects:[
-					{name:'物理',marks:78},
-					{name:'化学',marks:82},
-					{name:'语文',marks:68},
-					{name:'外语',marks:78},
-					{name:'Java',marks:87}
-				],
-				fullName:function() {
-					var studentObj;
-					studentObj = $scope.student;
-					return studentObj.firstName + studentObj.lastName;
-				}
-			};			
+			var url = "http://ganliao.qiniudn.com/TestArchive.plist";
+			$http.get(url).success (function(response) {
+				$scope.students = response;
+			});		
 		});
 	</script>
 </body>
