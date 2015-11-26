@@ -1,4 +1,5 @@
 <html>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<head>
 		<title>Angular JS Include 示例</title>
 		<script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
@@ -19,8 +20,8 @@
 	<body>
 		<h2>AngularJS Inlcude示例</h2>
 		<div ng-app="mainApp" ng-controller="studentController">
-			<div ng-include="main.html"></div>
-			<div ng-include="subjects.html"></div>
+			<div ng-include="'main.html'"></div>
+			<div ng-include="'subjects.html'"></div>
 		</div>
 	<script>
 		var mainApp = angular.module("mainApp", []);
@@ -40,10 +41,10 @@
 				fullName:function() {
 					var studentObj;
 					studentObj = $scope.student;
-					return studentObj.firstName + " " + studentObj.lastName;
+					return studentObj.firstName + studentObj.lastName;
 				}
 			};			
 		});
-		</script>
-		</body>
-		</html>
+	</script>
+</body>
+</html>
