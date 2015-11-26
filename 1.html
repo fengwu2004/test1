@@ -3,6 +3,7 @@
 	<title>AngularJS表达式</title>
 	<script src="http://apps.bdimg.com/libs/angular.js/1.2.16/angular.min.js"></script>
 	<script src="mainApp.js"></script>
+	<script src="studentController.js"></script>
 	<h2>Angular APP</h2>
 	<style>
 		table, th, td {
@@ -21,20 +22,23 @@
 	</style>
 	<body>
 		<div ng-app="mainApp" ng-controller="studentController">
-			<input name="firstName" type="text" ng-model="firstName" required>
-			<input name="lastName" type="text" ng-model="lastName" required>
-			<input name="email" type="email" ng-model="email" required>
-			<button ng-click="reset()">Reset</button>
-			<script>
-				function studentController($scope) { 
-						$scope.reset = function(){
-						$scope.firstName = "Mahesh";
-						$scope.lastName = "Parashar";
-						$scope.email = "MaheshParashar@yiibai.com";
-				}   
-				$scope.reset();
-			</script>
-				
+		<form name="studentForm" novalidate>
+		<table border="0">
+			<tr><td>姓氏:</td><td><input name="firstName" type="text" ng-model="firstName" required>
+			<span style="color:red" ng-show="studentForm.firstName.$dirty && studentForm.firstName.$invalid">
+			<span ng-show="studentForm.firstName.$error.required">姓氏不可为空.</span>
+			</span>
+			</td></tr>
+			<tr><td>Email:</td><td><input name="email" type="email" ng-model="email" data-ng-maxlength="100" required>
+				<span style="color:red" ng-show="studentForm.email.$dirty && studentForm.email.$invalid">
+					<span ng-show="studentForm.email.$error.required">Email不可为空</span>
+					<span ng-show="studentForm.email.$error.email">无效的Email地址</span>
+				</span>
+			</td></tr>
+			<tr><td><button ng-click="reset()">重置</button></td><td><button ng-disabled="studentForm.email.$invalid" ng-click="submit()">提交</button></td></tr>
+			<tr><td colspan="2" height="30">{{firstName + " " + email}}</td></tr>
+		</table>
+		</form>			
 		</div>	
 	</body>
 </html>
