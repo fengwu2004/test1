@@ -1,24 +1,23 @@
-// angular.module("MyApp", [])	
-// .controller("MainCtrl",function ($scope) {
-//  	$scope.timeOfDay = 'morning';
-//  	$scope.name = 'Nikki';
-// });
-
-function studentController($scope) {
-	$scope.student={firstname:'',lastname:'zz',rollno:101};
-	$scope.marks=[82,91,78,77,64];
-	$scope.quantity=1;
-	$scope.cost=30;
-	$scope.fullname=function() {
-		var studentObj;
-		studentObj = $scope.student;
-		return studentObj.firstname + " " + studentObj.lastname;	
-	}
-	$scope.subjects=[
-		{name:'物理',marks:70},
-		{name:'化学',marks:85},
-		{name:'数学',marks:72},
-		{name:'体育',marks:45},
-		{name:'地理',marks:66}
-	];
-}
+var app = angular.module('ngRouteExample', ['ngRoute'])
+			.controller('MainController', function($scope) {
+			})
+			.config(function($routeProvider, $locationProvider) {
+			$routeProvider
+				.when('/users', {
+					templateUrl: 'user-list.html',
+					controller: 'UserListCtrl'
+				})
+				.when('/users/:username', {
+					templateUrl: 'user.html',
+					controller: 'UserCtrl'
+				});
+		
+				// configure html5
+				$locationProvider.html5Mode(true);
+			});
+			
+			app.controller('UserListCtrl', function($scope) {});
+			
+			app.controller('UserCtrl', function($scope, $routeParams) {
+				$scope.params = $routeParams;
+			});
